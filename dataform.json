@@ -1,5 +1,8 @@
 {
-  "defaultSchema": "dataform",
+  "defaultSchema": "analytics",
   "assertionSchema": "dataform_assertions",
-  "warehouse": "bigquery"
+  "warehouse": "bigquery",
+  "vars": {
+    "GA4_SOURCE": "macherjobs.analytics_500081400"
+  }
 }
