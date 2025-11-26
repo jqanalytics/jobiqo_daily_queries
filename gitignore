@@ -1,4 +1,4 @@
 # .gitignore file content
 
-# Ignore the Dataform configuration file to manage it per project tests
+# Ignore the Dataform configuration file to manage it per project
 dataform.json
