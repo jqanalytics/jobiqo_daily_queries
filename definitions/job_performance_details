@@ -1,11 +1,11 @@
 config {
   type: "table",
-  schema: "analytics",
+  schema: "daily_queries",
   tags: ["daily", "events"],
   // This alias will be overridden in the GCP UI for each project
   bigquery: {
     partitionBy: "event_date_formatted",
-    clusterBy: ["event_name", "entity_type"]
+    clusterBy: ["event_name"]
   }
 }
 
