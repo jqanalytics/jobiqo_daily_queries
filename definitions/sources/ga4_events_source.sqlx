@@ -1,6 +1,0 @@
-config {
-  type: "declaration",
-  database: "macherjobs", 
-  schema: "analytics_500081400", 
-  name: "events_raw" -- The name you will use to reference it in your main query
-}

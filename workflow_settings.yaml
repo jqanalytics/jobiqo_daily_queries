@@ -1,5 +1,5 @@
-# workflow_settings.yaml file content
-
-# Define default dataset and project settings
-defaultProject: macherjobs
-defaultDataset: daily_queries
+defaultProject: placeholder
+defaultDataset: placeholder
+vars:
+  source_project: "placeholder"
+  source_dataset: "placeholder"
