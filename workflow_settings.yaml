@@ -1,5 +1,5 @@
-defaultProject: placeholder
-defaultDataset: placeholder
+defaultProject: macherjobs
+defaultDataset: daily_queries
 vars:
   source_project: "placeholder"
   source_dataset: "placeholder"
