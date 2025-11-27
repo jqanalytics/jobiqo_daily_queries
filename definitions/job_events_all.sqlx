@@ -1,0 +1,47 @@
+config {
+  type: "table",
+  tags: ["daily", "events"],
+  // This alias will be overridden in the GCP UI for each project
+  bigquery: {
+    partitionBy: "event_date_formatted",
+    clusterBy: ["event_name"]
+  }
+}
+
+-- Define a reference to the source table alias
+SELECT
+event_name,
+event_date,
+(SELECT value.int_value FROM UNNEST(event_params) WHERE key='entity_id') AS entity_id,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='entity_type') AS entity_type,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='entity_subtype') AS entity_subtype,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='organization_name') AS organization_name,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='title') AS title,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='application_type') AS application_type,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='occupations') AS occupations,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='regions') AS regions,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='employment_types') AS employment_types,
+(SELECT value.int_value FROM UNNEST(event_params) WHERE key='importer_ID') AS importer_ID,
+(SELECT value.int_value FROM UNNEST(event_params) WHERE key='current_user_id') AS current_user_id,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='user_role') AS user_role,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='current_user_role') AS current_user_role,
+(SELECT value.int_value FROM UNNEST(event_params) WHERE key='owner_id') AS owner_id,
+(SELECT value.int_value FROM UNNEST(event_params) WHERE key='organization_id') AS organization_id,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='page_referrer') AS page_referrer,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='page_location') AS page_location,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='upgrades') AS upgrades,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='search_query') AS search_query,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='companies') AS companies,
+(SELECT value.string_value FROM UNNEST(event_params) WHERE key='signup_method') AS signup_method,
+device.category AS device,
+device.operating_system AS operating_system,
+device.web_info.browser AS browser,
+traffic_source.name as campaign,
+traffic_source.medium AS medium,
+traffic_source.source AS source,
+count(1) AS Events
+FROM `${dataform.projectConfig.vars.source_project}.${dataform.projectConfig.vars.source_dataset}.events_*`
+WHERE
+event_name IN ("job_alert_signup", "job_alert_signup_anonymous", "job_alert_prompt", "orgprofile_visit", "sign_up_start", "sign_up", "login", "resume_completed", "job_search", "job_bookmark")
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+ORDER BY Events desc
