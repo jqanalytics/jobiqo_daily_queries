@@ -1,4 +1,0 @@
-defaultProject: macherjobs
-defaultDataset: daily_queries
-vars:
-  GA4_SOURCE: macherjobs.analytics_500081400
