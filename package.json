@@ -2,6 +2,6 @@
   "name": "your-project-name",
   "version": "1.0.0",
   "dependencies": {
-    "@dataform/core": "latest" 
+    "@dataform/core": "3.0.38" 
   }
 }

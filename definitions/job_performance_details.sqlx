@@ -39,7 +39,7 @@ SELECT
   traffic_source.source AS source,
   count(1) AS Events
 -- Use a placeholder alias that will be overridden in the GCP UI
-FROM ${ref("GA4_SOURCE", "events_*")}
+FROM ${ref("events_raw", "events_*")}
 WHERE
   event_name IN ('job_visit', 'job_apply_start', 'job_apply_complete','qa_basic_info_page_view', 'qa_questions_page_view', 'qa_file_upload_page_view', 'qa_review_info_page_view', 'qa_success_page_view')
 GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
