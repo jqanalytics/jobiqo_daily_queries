@@ -1,5 +1,4 @@
 defaultProject: placeholder
-defaultDataset: placeholder
 vars:
   source_project: "placeholder"
   source_dataset: "placeholder"
