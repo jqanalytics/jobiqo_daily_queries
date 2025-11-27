@@ -1,3 +1,4 @@
+projectDataset: daily_queries
 vars:
   source_project: "placeholder"
   source_dataset: "placeholder"
