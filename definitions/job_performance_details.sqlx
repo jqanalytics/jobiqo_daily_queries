@@ -1,6 +1,6 @@
 config {
   type: "table",
-  schema: "daily_queries",
+  // schema: "daily_queries",
   tags: ["daily", "events"],
   // This alias will be overridden in the GCP UI for each project
   bigquery: {
